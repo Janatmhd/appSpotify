@@ -1,0 +1,429 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap');
+
+:root {
+    --bg: #121212;
+    --surface: #181818;
+    --surface-hover: #242424;
+    --border: #2a2a2a;
+    --text: #ffffff;
+    --text-muted: #b3b3b3;
+    --green: #1db954;
+    --green-hover: #1ed760;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 32px 16px 64px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    line-height: 1.5;
+    position: relative;
+}
+
+/* ---------- Titres ---------- */
+h1 {
+    margin: 0 0 32px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+h1::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 12px;
+    border-radius: 50%;
+    background: var(--green);
+    vertical-align: middle;
+}
+
+h2 {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* ---------- Sections en cartes ---------- */
+section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+/* ---------- Liens ---------- */
+a {
+    color: var(--green);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+a:hover {
+    color: var(--green-hover);
+    text-decoration: underline;
+}
+
+/* ---------- Boutons ---------- */
+button {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #000;
+    background: var(--green);
+    border: none;
+    border-radius: 999px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+    white-space: nowrap;
+}
+
+button:hover:not(:disabled) {
+    background: var(--green-hover);
+    transform: scale(1.04);
+}
+
+button:disabled {
+    background: #3a3a3a;
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* Bouton de déconnexion : en haut à droite, contour discret */
+#logout {
+    position: absolute;
+    top: 40px;
+    right: 16px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid #727272;
+}
+
+#logout:hover {
+    background: transparent;
+    border-color: var(--text);
+}
+
+/* ---------- Profil ---------- */
+#profile {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "avatar title"
+        "avatar infos";
+    column-gap: 32px;
+    align-items: start;
+    background: linear-gradient(135deg, #1f3a2a 0%, var(--surface) 60%);
+}
+
+#profile h2 {
+    grid-area: title;
+    margin-top: 8px;
+    font-size: 1.8rem;
+}
+
+#displayName {
+    color: var(--green);
+}
+
+#avatar {
+    grid-area: avatar;
+}
+
+#avatar img {
+    display: block;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+#profile ul {
+    grid-area: infos;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+#profile li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+#profile li:last-child {
+    border-bottom: none;
+}
+
+#profile li span,
+#profile li a {
+    color: var(--text);
+}
+
+/* ---------- Artistes suivis ---------- */
+#artistsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    min-width: 0;
+    gap: 16px;
+}
+
+.artist-card {
+    min-width: 0;
+    background: #1f1f1f;
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.artist-card:hover {
+    background: var(--surface-hover);
+}
+
+.artist-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.artist-card p {
+    margin: 12px 0 4px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.artist-card a {
+    font-size: 0.85rem;
+}
+
+/* ---------- Formulaires de recherche ---------- */
+#searchForm,
+#artistSearchForm {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+#searchInput,
+#artistSearchInput {
+    flex: 1;
+    min-width: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background: #2a2a2a;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    padding: 10px 20px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+#searchInput:focus,
+#artistSearchInput:focus {
+    border-color: var(--green);
+}
+
+#searchInput::placeholder,
+#artistSearchInput::placeholder {
+    color: #8a8a8a;
+}
+
+/* ---------- Lecteur ---------- */
+#player:not(:empty) {
+    margin-bottom: 20px;
+}
+
+#player iframe {
+    display: block;
+    width: 100%;
+    height: 152px;
+    border: 0;
+    border-radius: var(--radius);
+}
+
+/* ---------- Résultats (musiques et artistes) ---------- */
+#searchResults,
+#artistResults {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#searchResults li,
+#artistResults li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+
+#searchResults li:hover,
+#artistResults li:hover {
+    background: var(--surface-hover);
+}
+
+#searchResults img {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+#artistResults img {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Titre et artiste du morceau : prennent la place disponible */
+#searchResults li div {
+    flex: 1;
+    min-width: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Le <br> du script n'est plus utile : le titre passe déjà à la ligne */
+#searchResults li div br {
+    display: none;
+}
+
+#searchResults li strong {
+    display: block;
+    color: var(--text);
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#artistResults li a {
+    flex: 1;
+    min-width: 0;
+    color: var(--text);
+    font-weight: 700;
+    word-break: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Bouton « Ne plus suivre » / « Écouter » plus discrets dans les listes */
+#searchResults li button,
+#artistResults li button {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+}
+
+/* ---------- Pagination ---------- */
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+#pageInfo {
+    color: var(--text-muted);
+    font-weight: 600;
+    min-width: 110px;
+    text-align: center;
+}
+
+/* ---------- Téléphone ---------- */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 1.8rem;
+        margin-top: 48px;
+    }
+
+    #logout {
+        top: 24px;
+    }
+
+    #profile {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "avatar"
+            "title"
+            "infos";
+        text-align: center;
+    }
+
+    #avatar img {
+        margin: 0 auto 16px;
+    }
+
+    #profile ul {
+        text-align: left;
+    }
+
+    #searchForm,
+    #artistSearchForm {
+        flex-direction: column;
+    }
+
+    section {
+        padding: 16px;
+    }
+
+    #artistsList {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .artist-card {
+        padding: 12px;
+    }
+
+    #searchResults li,
+    #artistResults li {
+        gap: 12px;
+        padding: 8px 4px;
+    }
+
+    #searchResults li button,
+    #artistResults li button {
+        padding: 8px 12px;
+    }
+
+    #pagination {
+        gap: 8px;
+    }
+
+    #pagination button {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+
+    #pageInfo {
+        min-width: 0;
+        font-size: 0.85rem;
+    }
+}

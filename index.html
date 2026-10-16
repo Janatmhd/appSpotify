@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mon profil Spotify</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <script src="src/script.ts" type="module"></script>
+</head>
+<body>
+    <h1>Mon profil Spotify</h1>
+    <button id="logout">Se déconnecter</button>
+
+    <section id="profile">
+        <h2>Connecté en tant que <span id="displayName"></span></h2>
+        <span id="avatar"></span>
+        <ul>
+            <li>Identifiant : <span id="id"></span></li>
+            <li>Email : <span id="email"></span></li>
+            <li>URI Spotify : <a id="uri" href="#"></a></li>
+            <li>Lien API : <a id="url" href="#"></a></li>
+            <li>Image de profil : <span id="imgUrl"></span></li>
+        </ul>
+    </section>
+    <section id="artists">
+            <h2>Artistes suivis</h2>
+            <div id="artistsList"></div>
+        </section>
+        <section id="search">
+        <h2>Rechercher une musique</h2>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Titre, artiste…" required>
+            <button type="submit">Rechercher</button>
+        </form>
+
+        <div id="player"></div>
+        <ul id="searchResults"></ul>
+
+        <div id="pagination">
+            <button id="prevPage" disabled>◀ Précédent</button>
+            <span id="pageInfo"></span>
+            <button id="nextPage" disabled>Suivant ▶</button>
+        </div>
+    </section>
+    <section id="artistSearch">
+        <h2>Rechercher un artiste</h2>
+        <form id="artistSearchForm">
+            <input type="text" id="artistSearchInput" placeholder="Nom de l'artiste…" required>
+            <button type="submit">Rechercher</button>
+        </form>
+        <ul id="artistResults"></ul>
+    </section>
+    
+</body>
+</html>
+ <!-- Note- We're referring directly to the TypeScript file, 
+ and we're using the `type="module"` attribute. 
+ Vite will transpile our TypeScript to JavaScript 
+ so that it can run in the browser. -->
